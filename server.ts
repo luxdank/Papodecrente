@@ -462,6 +462,13 @@ app.post("/api/orders/:id/status", (req, res) => {
   const auditDetails = `Pedido #${order.displayId} atualizado de ${oldStatus} para ${status}`;
   addAuditLog(appState, user || "Sistema", "Mudança de Status", auditDetails, order.type === "ifood" ? "ifood" : "info");
 
+  // If it's an iFood order, push status callback to the real iFood Merchant API
+  if (order.type === "ifood") {
+    notifyIFoodOrderStatus(order, status).catch(err => {
+      console.error("[iFood Background Status push failed]:", err);
+    });
+  }
+
   saveState(appState);
   res.json({ status: "success", order, data: appState });
 });
@@ -682,6 +689,98 @@ app.post("/api/ifood/reprocess/:orderId", (req, res) => {
   saveState(appState);
   res.json({ status: "success", order, data: appState });
 });
+
+// Real-mode iFood Merchant API order status transition notifier
+async function notifyIFoodOrderStatus(order: any, newStatus: string) {
+  const config = appState.ifoodConfig;
+  if (!config || config.status !== "connected" || !config.clientId || !config.clientSecret) {
+    console.log(`[iFood Real API Sync] Integration is not configured/connected. Skipping order #${order.displayId} state update.`);
+    return;
+  }
+
+  const iFoodOrderId = order.ifoodDetails?.originalId;
+  if (!iFoodOrderId) {
+    console.log(`[iFood Real API Sync] Order #${order.displayId} has no iFood identity. Skipping.`);
+    return;
+  }
+
+  console.log(`[iFood Real API Sync] Syncing transition of ${iFoodOrderId} to status ${newStatus}...`);
+
+  try {
+    // Authenticate with client_credentials flow
+    const authParams = new URLSearchParams();
+    authParams.append("grantType", "client_credentials");
+    authParams.append("grant_type", "client_credentials");
+    authParams.append("clientId", config.clientId);
+    authParams.append("client_id", config.clientId);
+    authParams.append("clientSecret", config.clientSecret);
+    authParams.append("client_secret", config.clientSecret);
+
+    const authRes = await fetch("https://merchant-api.ifood.com.br/authentication/v1.0/oauth/token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: authParams.toString()
+    });
+
+    if (!authRes.ok) {
+      console.error(`[iFood Real API Sync] Auth failed with code ${authRes.status}`);
+      return;
+    }
+
+    const tokenData: any = await authRes.json();
+    const accessToken = tokenData.accessToken;
+    if (!accessToken) {
+      console.error(`[iFood Real API Sync] Access token not found in oauth response.`);
+      return;
+    }
+
+    // Determine corresponding iFood endpoint based on status enum values
+    let endpoint = "";
+    let bodyObj: any = null;
+
+    if (newStatus === OrderStatus.CONFIRMADO) {
+      endpoint = "confirm";
+    } else if (newStatus === OrderStatus.EM_PREPARO) {
+      endpoint = "startPreparation";
+    } else if (newStatus === OrderStatus.PRONTO || newStatus === OrderStatus.ENTREGUE || newStatus === OrderStatus.FINALIZADO) {
+      endpoint = "dispatch";
+    } else if (newStatus === OrderStatus.CANCELADO) {
+      endpoint = "requestCancellation";
+      bodyObj = {
+        reason: "Cancelado pelo operador através do Painel 360",
+        cancellationCode: "501"
+      };
+    }
+
+    if (!endpoint) {
+      console.log(`[iFood Real API Sync] No endpoint translation mapped for status: ${newStatus}`);
+      return;
+    }
+
+    console.log(`[iFood Real API Sync] Dispatching POST /order/v1.0/orders/${iFoodOrderId}/${endpoint}`);
+
+    const transitionRes = await fetch(`https://merchant-api.ifood.com.br/order/v1.0/orders/${iFoodOrderId}/${endpoint}`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${accessToken}`,
+        "Content-Type": "application/json"
+      },
+      body: bodyObj ? JSON.stringify(bodyObj) : undefined
+    });
+
+    if (!transitionRes.ok) {
+      const errText = await transitionRes.text();
+      console.error(`[iFood Real API Sync] Error in transition ${endpoint} (Code: ${transitionRes.status}): ${errText}`);
+    } else {
+      console.log(`[iFood Real API Sync] Successfully dispatched transition ${endpoint} to iFood for order ${iFoodOrderId}`);
+    }
+
+  } catch (err: any) {
+    console.error(`[iFood Real API Sync] Exception during state push to iFood:`, err);
+  }
+}
 
 // Configure iFood integration
 app.post("/api/ifood/config", (req, res) => {

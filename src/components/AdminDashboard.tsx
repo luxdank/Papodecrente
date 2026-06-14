@@ -20,7 +20,9 @@ import {
   ListFilter,
   CheckCircle,
   TrendingUp,
-  Package
+  Package,
+  Wifi,
+  AlertTriangle
 } from "lucide-react";
 
 interface AdminDashboardProps {
@@ -40,6 +42,8 @@ interface AdminDashboardProps {
     storeName?: string;
   };
   onPollNowIFood?: () => Promise<any>;
+  isLocalMode?: boolean;
+  onToggleLocalMode?: (val: boolean) => void;
 }
 
 export function AdminDashboard({
@@ -52,7 +56,9 @@ export function AdminDashboard({
   onLogout,
   currentUser,
   ifoodConfig,
-  onPollNowIFood
+  onPollNowIFood,
+  isLocalMode = false,
+  onToggleLocalMode
 }: AdminDashboardProps) {
 
   // Inner admin navigation tabs
@@ -232,6 +238,31 @@ export function AdminDashboard({
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Connection Mode Toggler */}
+          <div className="flex items-center gap-2 bg-slate-950/45 px-3 py-1.5 rounded-2xl border border-slate-800">
+            <Wifi className={`w-3.5 h-3.5 ${isLocalMode ? "text-amber-500" : "text-emerald-500 animate-pulse"}`} />
+            <div className="text-left">
+              <span className="text-[8px] uppercase tracking-wider text-slate-450 block font-bold leading-none">Conectividade</span>
+              <span className="text-[10px] font-black text-white leading-none">
+                {isLocalMode ? "MODO SIMULADO (OFFLINE)" : "INTEGRADOR LIVE (PROD)"}
+              </span>
+            </div>
+            {onToggleLocalMode && (
+              <button
+                type="button"
+                onClick={() => onToggleLocalMode(!isLocalMode)}
+                className={`ml-1.5 py-1 px-2 rounded-md text-[9px] font-black uppercase transition cursor-pointer shrink-0 ${
+                  isLocalMode 
+                    ? "bg-amber-600 hover:bg-amber-500 text-white animate-pulse" 
+                    : "bg-slate-800 hover:bg-slate-750 text-slate-300 border border-slate-700"
+                }`}
+                title={isLocalMode ? "Conectar ao banco de dados e usar integrações reais" : "Entrar no modo local para simulações e apresentações"}
+              >
+                {isLocalMode ? "Ativar Produção" : "Usar Demo"}
+              </button>
+            )}
+          </div>
+
           <button
             onClick={onLogout}
             className="flex items-center gap-1.5 bg-red-950/40 hover:bg-red-900 text-red-300 hover:text-white border border-red-900/30 py-2 px-4 rounded-xl text-xs font-extrabold transition cursor-pointer"
@@ -566,10 +597,38 @@ export function AdminDashboard({
 
         {/* TAB 5: IFOOD INTEGRATION PLATFORM */}
         {adminTab === "ifood" && (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in" id="admin-ifood-view">
-            
-            {/* Connection configuration fields Column */}
-            <div className="lg:col-span-2 bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-5">
+          <div className="lg:col-span-3 space-y-6 animate-fade-in" id="admin-ifood-view">
+            {isLocalMode && (
+              <div className="bg-amber-500/10 border border-amber-500/30 p-5 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="flex items-start gap-3">
+                  <div className="p-3 bg-amber-500 text-slate-950 rounded-xl">
+                    <AlertTriangle className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-black text-white uppercase tracking-wider">Modo Simulação local Ativo</h4>
+                    <p className="text-xxs text-slate-350 leading-relaxed max-w-2xl mt-1">
+                      Você está visualizando a lanchonete em <strong>Modo Demo Off-line</strong> (ideal para apresentações estáticas ou hospedagem no Netlify).
+                      Nesse modo, os novos pedidos do iFood são <strong>simulados localmente</strong> em seu navegador.
+                      Para realizar a <strong>integração em tempo real com as chaves reais de produção do iFood</strong>, você deve clicar no botão "Ativar Produção" no topo do painel para conectar o sistema ao servidor NodeJS Express correspondente.
+                    </p>
+                  </div>
+                </div>
+                {onToggleLocalMode && (
+                  <button
+                    type="button"
+                    onClick={() => onToggleLocalMode(false)}
+                    className="bg-amber-500 hover:bg-amber-600 font-extrabold text-slate-950 text-[10px] px-5 py-3 rounded-xl transition uppercase tracking-wider shrink-0 cursor-pointer"
+                  >
+                    🚀 Conectar Servidor Real
+                  </button>
+                )}
+              </div>
+            )}
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              
+              {/* Connection configuration fields Column */}
+              <div className="lg:col-span-2 bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-5">
               <div>
                 <h3 className="text-sm font-black text-white uppercase tracking-wider mb-1 flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-orange-500 animate-ping"></span>
@@ -735,6 +794,7 @@ export function AdminDashboard({
               </div>
             </div>
 
+          </div>
           </div>
         )}
 

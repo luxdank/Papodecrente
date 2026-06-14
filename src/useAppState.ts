@@ -260,8 +260,33 @@ const seedAuditLogs: AuditLog[] = [
   { id: "log-4", timestamp: new Date(Date.now() - 1000 * 600).toISOString(), user: "Integração iFood", action: "Captura Automática", details: "Novo pedido iFood #990184 capturado via API polling", type: "ifood" }
 ];
 
+const safeLocalStorage = {
+  getItem: (key: string): string | null => {
+    try {
+      return localStorage.getItem(key);
+    } catch (e) {
+      console.warn("Storage access denied:", e);
+      return null;
+    }
+  },
+  setItem: (key: string, value: string): void => {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) {
+      console.warn("Storage write denied:", e);
+    }
+  },
+  removeItem: (key: string): void => {
+    try {
+      localStorage.removeItem(key);
+    } catch (e) {
+      console.warn("Storage remove denied:", e);
+    }
+  }
+};
+
 const getInitialLocalState = (): AppState => {
-  const stored = localStorage.getItem("sistema_360_state");
+  const stored = safeLocalStorage.getItem("sistema_360_state");
   if (stored) {
     try {
       return JSON.parse(stored);
@@ -290,7 +315,7 @@ const getInitialLocalState = (): AppState => {
       storeName: "Teste - luxdank"
     }
   };
-  localStorage.setItem("sistema_360_state", JSON.stringify(defaultState));
+  safeLocalStorage.setItem("sistema_360_state", JSON.stringify(defaultState));
   return defaultState;
 };
 
@@ -300,12 +325,12 @@ export function useAppState() {
   const [error, setError] = useState<string | null>(null);
   const [lastOrderCount, setLastOrderCount] = useState<number>(0);
   const [isLocalFallbackMode, setIsLocalFallbackMode] = useState<boolean>(() => {
-    return localStorage.getItem("sistema_360_local_mode") === "true";
+    return safeLocalStorage.getItem("sistema_360_local_mode") === "true";
   });
 
   const saveLocalState = (newState: AppState) => {
     setState(newState);
-    localStorage.setItem("sistema_360_state", JSON.stringify(newState));
+    safeLocalStorage.setItem("sistema_360_state", JSON.stringify(newState));
   };
 
   const addLocalAuditLog = (currentState: AppState, user: string, action: string, details: string, type: "info" | "warning" | "error" | "ifood" | "finance") => {
@@ -366,7 +391,7 @@ export function useAppState() {
     } catch (err: any) {
       console.warn("Servidor indisponível ou erro de conexão. Ativando Modo Offline Autônomo para Netlify.", err);
       // Automatically switch to local database fallback!
-      localStorage.setItem("sistema_360_local_mode", "true");
+      safeLocalStorage.setItem("sistema_360_local_mode", "true");
       setIsLocalFallbackMode(true);
       const localData = getInitialLocalState();
       setState(localData);
@@ -857,7 +882,7 @@ export function useAppState() {
 
   const resetStore = async () => {
     if (isLocalFallbackMode) {
-      localStorage.removeItem("sistema_360_state");
+      safeLocalStorage.removeItem("sistema_360_state");
       const localData = getInitialLocalState();
       setState(localData);
       return;
@@ -871,6 +896,21 @@ export function useAppState() {
       }
     } catch (err) {
       console.error(err);
+    }
+  };
+
+  const setLocalMode = (val: boolean) => {
+    if (val) {
+      safeLocalStorage.setItem("sistema_360_local_mode", "true");
+      setIsLocalFallbackMode(true);
+    } else {
+      safeLocalStorage.removeItem("sistema_360_local_mode");
+      setIsLocalFallbackMode(false);
+      setLoading(true);
+      setError(null);
+      setTimeout(() => {
+        fetchState();
+      }, 100);
     }
   };
 
@@ -892,6 +932,7 @@ export function useAppState() {
     resetStore,
     triggerManualRefresh: fetchState,
     playAlertSound,
-    isLocalMode: isLocalFallbackMode
+    isLocalMode: isLocalFallbackMode,
+    setLocalMode
   };
 }

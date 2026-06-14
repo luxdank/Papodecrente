@@ -26,7 +26,9 @@ export default function App() {
     addTransaction,
     simulateIFood,
     pollNowIFood,
-    resetStore
+    resetStore,
+    isLocalMode,
+    setLocalMode
   } = useAppState();
 
   // Session state
@@ -216,6 +218,8 @@ export default function App() {
         onDeleteOrder={(id) => {
           if (deleteOrder) deleteOrder(id, currentUser);
         }}
+        isLocalMode={isLocalMode}
+        onToggleLocalMode={setLocalMode}
       />
     );
   }
@@ -245,6 +249,8 @@ export default function App() {
         currentUser={currentUser}
         ifoodConfig={state.ifoodConfig}
         onPollNowIFood={pollNowIFood}
+        isLocalMode={isLocalMode}
+        onToggleLocalMode={setLocalMode}
       />
     );
   }

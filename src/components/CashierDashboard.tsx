@@ -29,7 +29,8 @@ import {
   MessageSquare,
   Send,
   Smartphone,
-  MessageCircle
+  MessageCircle,
+  Wifi
 } from "lucide-react";
 
 interface CashierDashboardProps {
@@ -61,6 +62,8 @@ interface CashierDashboardProps {
   currentUser: string;
   onPollNowIFood?: () => Promise<any>;
   onDeleteOrder: (orderId: string) => void;
+  isLocalMode?: boolean;
+  onToggleLocalMode?: (val: boolean) => void;
 }
 
 export function CashierDashboard({
@@ -75,7 +78,9 @@ export function CashierDashboard({
   onLogout,
   currentUser,
   onPollNowIFood,
-  onDeleteOrder
+  onDeleteOrder,
+  isLocalMode = false,
+  onToggleLocalMode
 }: CashierDashboardProps) {
   
 // Tab control inner cashier
@@ -423,6 +428,31 @@ export function CashierDashboard({
           </div>
 
           <div className="flex items-center gap-3 flex-wrap">
+            {/* Connection Mode Toggler */}
+            <div className="flex items-center gap-2 bg-slate-950/45 px-3 py-1.5 rounded-2xl border border-slate-750">
+              <Wifi className={`w-3.5 h-3.5 ${isLocalMode ? "text-amber-500" : "text-emerald-500 animate-pulse"}`} />
+              <div className="text-left">
+                <span className="text-[8px] uppercase tracking-wider text-slate-450 block font-bold leading-none">Conectividade</span>
+                <span className="text-[10px] font-black text-white leading-none">
+                  {isLocalMode ? "MODO SIMULADO (OFFLINE)" : "INTEGRADOR LIVE (PROD)"}
+                </span>
+              </div>
+              {onToggleLocalMode && (
+                <button
+                  type="button"
+                  onClick={() => onToggleLocalMode(!isLocalMode)}
+                  className={`ml-1.5 py-1 px-2 rounded-md text-[9px] font-black uppercase transition cursor-pointer shrink-0 ${
+                    isLocalMode 
+                      ? "bg-amber-600 hover:bg-amber-500 text-white animate-pulse" 
+                      : "bg-slate-800 hover:bg-slate-750 text-slate-300 border border-slate-700"
+                  }`}
+                  title={isLocalMode ? "Desativar demonstração e usar banco de dados real com as integrações ligadas" : "Ativar modo off-line local de teste"}
+                >
+                  {isLocalMode ? "Ativar Produção" : "Usar Demo"}
+                </button>
+              )}
+            </div>
+
             {/* Status do Dia (Caixa) */}
             <div className="flex items-center gap-2 bg-slate-950/45 px-3 py-1.5 rounded-2xl border border-slate-700/50">
               <div className={`w-2 h-2 rounded-full shrink-0 ${caixaStatus?.isOpen ? "bg-emerald-400 animate-pulse" : "bg-rose-500"}`} />
