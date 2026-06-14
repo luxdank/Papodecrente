@@ -1,0 +1,787 @@
+{
+  "products": [
+    {
+      "id": "prod-1",
+      "name": "Burgão Cheddar Bacon",
+      "description": "Hambúrguer de blend artesanal 150g, muito cheddar cremoso e fatias crocantes de bacon caipira no pão brioche selado.",
+      "category": "lanches",
+      "price": 32.9,
+      "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&auto=format&fit=crop&q=80",
+      "stock": 44,
+      "extras": [
+        {
+          "id": "ext-1",
+          "name": "Cheddar Extra",
+          "price": 4.5
+        },
+        {
+          "id": "ext-2",
+          "name": "Bacon em Dobro",
+          "price": 5
+        },
+        {
+          "id": "ext-3",
+          "name": "Hambúrguer 150g",
+          "price": 8
+        }
+      ],
+      "popular": true
+    },
+    {
+      "id": "prod-2",
+      "name": "Frango Crisp Crocante",
+      "description": "Filé de frango empanado ultra crocante na farinha panko, maionese artesanal de alho, queijo prato e alface americana.",
+      "category": "lanches",
+      "price": 28.9,
+      "image": "https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?w=400&auto=format&fit=crop&q=80",
+      "stock": 30,
+      "popular": true,
+      "extras": [
+        {
+          "id": "ext-4",
+          "name": "Maionese Extra",
+          "price": 2
+        },
+        {
+          "id": "ext-5",
+          "name": "Queijo Prato",
+          "price": 3
+        }
+      ]
+    },
+    {
+      "id": "prod-3",
+      "name": "X-Salada Clássico",
+      "description": "Blend bovino de 120g grelhado na chapa, queijo prato derretido, alface crespa fresca, fatias de tomate e molho da casa.",
+      "category": "lanches",
+      "price": 24.9,
+      "image": "https://images.unsplash.com/photo-1550317138-10000687a72b?w=400&auto=format&fit=crop&q=80",
+      "stock": 50,
+      "extras": [
+        {
+          "id": "ext-6",
+          "name": "Ovo Frito",
+          "price": 2.5
+        },
+        {
+          "id": "ext-7",
+          "name": "Queijo Extra",
+          "price": 3
+        }
+      ]
+    },
+    {
+      "id": "prod-4",
+      "name": "Batata Rústica da Casa",
+      "description": "Canoas de batata assadas com casca, fritas até dourar, temperadas com sal marinho, alecrim fresco e parmesão ralado.",
+      "category": "porcoes",
+      "price": 19.9,
+      "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&auto=format&fit=crop&q=80",
+      "stock": 60,
+      "extras": [
+        {
+          "id": "ext-8",
+          "name": "Cheddar & Bacon Salpicado",
+          "price": 6.5
+        },
+        {
+          "id": "ext-9",
+          "name": "Molho de Alho Cozinha",
+          "price": 2.5
+        }
+      ]
+    },
+    {
+      "id": "prod-5",
+      "name": "Calabresa na Chapa com Cebola",
+      "description": "Porção farta de calabresa fatiada fina e grelhada com cebola roxa caramelizada na chapa. Acompanha fatias de pão brioche.",
+      "category": "porcoes",
+      "price": 27.9,
+      "image": "https://images.unsplash.com/photo-1524182576066-1bb979e2534b?w=400&auto=format&fit=crop&q=80",
+      "stock": 25,
+      "extras": [
+        {
+          "id": "ext-10",
+          "name": "Pão de Brioche Extra (2 un)",
+          "price": 4
+        }
+      ]
+    },
+    {
+      "id": "prod-6",
+      "name": "Coca-Cola Lata 350ml",
+      "description": "Refrigerante lata super gelado.",
+      "category": "bebidas",
+      "price": 6.5,
+      "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&auto=format&fit=crop&q=80",
+      "stock": 119,
+      "extras": [
+        {
+          "id": "ext-11",
+          "name": "Fatia de Limão e Gelo",
+          "price": 1
+        }
+      ]
+    },
+    {
+      "id": "prod-7",
+      "name": "Suco de Laranja Natural 400ml",
+      "description": "Espremido na hora, 100% fruta, sem adição de água ou açúcar.",
+      "category": "bebidas",
+      "price": 9,
+      "image": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400&auto=format&fit=crop&q=80",
+      "stock": 40,
+      "extras": [
+        {
+          "id": "ext-12",
+          "name": "Adicionar Hortelã",
+          "price": 1
+        }
+      ]
+    },
+    {
+      "id": "prod-8",
+      "name": "Pudim de Leite Condensado",
+      "description": "Pudim liso clássico, extremamente cremoso, com calda de caramelo brilhante e dourada. Receita tradicional.",
+      "category": "sobremesas",
+      "price": 12,
+      "image": "https://images.unsplash.com/photo-1528975604071-b4dc52a2d18c?w=400&auto=format&fit=crop&q=80",
+      "stock": 15,
+      "extras": []
+    },
+    {
+      "id": "prod-9",
+      "name": "Combo Dupla Perfeita (Casal)",
+      "description": "2x Burgão Cheddar Bacon + 1x Batata Rústica da Casa + 2x Cervejas Heineken ou Cocas. O melhor preço do cardápio.",
+      "category": "combos",
+      "price": 79.9,
+      "image": "https://images.unsplash.com/photo-1521305916504-4a1121188589?w=400&auto=format&fit=crop&q=80",
+      "stock": 20,
+      "popular": true,
+      "extras": [
+        {
+          "id": "ext-13",
+          "name": "Maionese Artesanal",
+          "price": 2
+        }
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord-brdgunn",
+      "displayId": 1006,
+      "clientName": "Luiz Henrique (teste)",
+      "type": "ifood",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "Burgão Cheddar Bacon",
+            "description": "Hambúrguer de blend artesanal 150g, muito cheddar cremoso e fatias crocantes de bacon caipira no pão brioche selado.",
+            "category": "lanches",
+            "price": 32.9,
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&auto=format&fit=crop&q=80",
+            "stock": 44,
+            "extras": [
+              {
+                "id": "ext-1",
+                "name": "Cheddar Extra",
+                "price": 4.5
+              },
+              {
+                "id": "ext-2",
+                "name": "Bacon em Dobro",
+                "price": 5
+              },
+              {
+                "id": "ext-3",
+                "name": "Hambúrguer 150g",
+                "price": 8
+              }
+            ],
+            "popular": true
+          },
+          "quantity": 1,
+          "selectedExtras": [],
+          "observation": "Sem cebola"
+        },
+        {
+          "product": {
+            "id": "prod-6",
+            "name": "Coca-Cola Lata 350ml",
+            "description": "Refrigerante lata super gelado.",
+            "category": "bebidas",
+            "price": 6.5,
+            "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&auto=format&fit=crop&q=80",
+            "stock": 119,
+            "extras": [
+              {
+                "id": "ext-11",
+                "name": "Fatia de Limão e Gelo",
+                "price": 1
+              }
+            ]
+          },
+          "quantity": 1,
+          "selectedExtras": [],
+          "observation": "Sem cebola"
+        }
+      ],
+      "total": 39.4,
+      "paymentMethod": "pix",
+      "status": "FINALIZADO",
+      "createdAt": "2026-06-09T14:34:34.155Z",
+      "startedPreparAt": "2026-06-09T14:55:10.074Z",
+      "readyAt": "2026-06-09T14:55:11.080Z",
+      "completedAt": "2026-06-09T14:56:22.538Z"
+    },
+    {
+      "id": "ord-ifd-xc47qvj",
+      "displayId": 1005,
+      "clientName": "Letícia Lima",
+      "type": "ifood",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "Burgão Cheddar Bacon",
+            "description": "Hambúrguer de blend artesanal 150g, muito cheddar cremoso e fatias crocantes de bacon caipira no pão brioche selado.",
+            "category": "lanches",
+            "price": 32.9,
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&auto=format&fit=crop&q=80",
+            "stock": 45,
+            "extras": [
+              {
+                "id": "ext-1",
+                "name": "Cheddar Extra",
+                "price": 4.5
+              },
+              {
+                "id": "ext-2",
+                "name": "Bacon em Dobro",
+                "price": 5
+              },
+              {
+                "id": "ext-3",
+                "name": "Hambúrguer 150g",
+                "price": 8
+              }
+            ],
+            "popular": true
+          },
+          "quantity": 1,
+          "selectedExtras": [
+            {
+              "id": "ext-1",
+              "name": "Cheddar Extra",
+              "price": 4.5
+            }
+          ],
+          "observation": "Sem picles"
+        },
+        {
+          "product": {
+            "id": "prod-6",
+            "name": "Coca-Cola Lata 350ml",
+            "description": "Refrigerante lata super gelado.",
+            "category": "bebidas",
+            "price": 6.5,
+            "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&auto=format&fit=crop&q=80",
+            "stock": 120,
+            "extras": [
+              {
+                "id": "ext-11",
+                "name": "Fatia de Limão e Gelo",
+                "price": 1
+              }
+            ]
+          },
+          "quantity": 1,
+          "selectedExtras": [],
+          "observation": "Gelo e limão separados"
+        }
+      ],
+      "total": 51.4,
+      "status": "FINALIZADO",
+      "createdAt": "2026-06-09T14:20:48.616Z",
+      "ifoodDetails": {
+        "originalId": "IFD-824040",
+        "deliveryFee": 7.5,
+        "syncStatus": "COMPLETED"
+      },
+      "startedPreparAt": "2026-06-09T14:54:40.537Z",
+      "readyAt": "2026-06-09T14:55:08.894Z",
+      "completedAt": "2026-06-09T14:56:23.557Z"
+    },
+    {
+      "id": "ord-1",
+      "displayId": 1001,
+      "clientName": "Roberto Fontes",
+      "type": "balcao",
+      "items": [
+        {
+          "product": {
+            "id": "prod-1",
+            "name": "Burgão Cheddar Bacon",
+            "description": "Hambúrguer de blend artesanal 150g, muito cheddar cremoso e fatias crocantes de bacon caipira no pão brioche selado.",
+            "category": "lanches",
+            "price": 32.9,
+            "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&auto=format&fit=crop&q=80",
+            "stock": 45,
+            "popular": true,
+            "extras": [
+              {
+                "id": "ext-1",
+                "name": "Cheddar Extra",
+                "price": 4.5
+              },
+              {
+                "id": "ext-2",
+                "name": "Bacon em Dobro",
+                "price": 5
+              },
+              {
+                "id": "ext-3",
+                "name": "Hambúrguer 150g",
+                "price": 8
+              }
+            ]
+          },
+          "quantity": 1,
+          "selectedExtras": [
+            {
+              "id": "ext-1",
+              "name": "Cheddar Extra",
+              "price": 4.5
+            }
+          ],
+          "observation": "Sem cebola por favor"
+        },
+        {
+          "product": {
+            "id": "prod-6",
+            "name": "Coca-Cola Lata 350ml",
+            "description": "Refrigerante lata super gelado.",
+            "category": "bebidas",
+            "price": 6.5,
+            "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&auto=format&fit=crop&q=80",
+            "stock": 120,
+            "extras": [
+              {
+                "id": "ext-11",
+                "name": "Fatia de Limão e Gelo",
+                "price": 1
+              }
+            ]
+          },
+          "quantity": 1,
+          "selectedExtras": [],
+          "observation": ""
+        }
+      ],
+      "total": 43.9,
+      "paymentMethod": "pix",
+      "status": "FINALIZADO",
+      "createdAt": "2026-06-09T09:18:02.527Z",
+      "completedAt": "2026-06-09T09:48:02.527Z"
+    },
+    {
+      "id": "ord-2",
+      "displayId": 1002,
+      "clientName": "Júlia Santos",
+      "type": "qrcode",
+      "tableNum": "Mesa 03",
+      "items": [
+        {
+          "product": {
+            "id": "prod-3",
+            "name": "X-Salada Clássico",
+            "description": "Blend bovino de 120g grelhado na chapa, queijo prato derretido, alface crespa fresca, fatias de tomate e molho da casa.",
+            "category": "lanches",
+            "price": 24.9,
+            "image": "https://images.unsplash.com/photo-1550317138-10000687a72b?w=400&auto=format&fit=crop&q=80",
+            "stock": 50,
+            "extras": [
+              {
+                "id": "ext-6",
+                "name": "Ovo Frito",
+                "price": 2.5
+              },
+              {
+                "id": "ext-7",
+                "name": "Queijo Extra",
+                "price": 3
+              }
+            ]
+          },
+          "quantity": 1,
+          "selectedExtras": [
+            {
+              "id": "ext-6",
+              "name": "Ovo Frito",
+              "price": 2.5
+            }
+          ],
+          "observation": "Bem passado"
+        },
+        {
+          "product": {
+            "id": "prod-7",
+            "name": "Suco de Laranja Natural 400ml",
+            "description": "Espremido na hora, 100% fruta, sem adição de água ou açúcar.",
+            "category": "bebidas",
+            "price": 9,
+            "image": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400&auto=format&fit=crop&q=80",
+            "stock": 40,
+            "extras": [
+              {
+                "id": "ext-12",
+                "name": "Adicionar Hortelã",
+                "price": 1
+              }
+            ]
+          },
+          "quantity": 1,
+          "selectedExtras": [],
+          "observation": ""
+        }
+      ],
+      "total": 36.4,
+      "paymentMethod": "credito",
+      "status": "FINALIZADO",
+      "createdAt": "2026-06-09T12:18:02.527Z",
+      "completedAt": "2026-06-09T12:48:02.527Z"
+    },
+    {
+      "id": "ord-3",
+      "displayId": 1003,
+      "clientName": "Carlos Alberto",
+      "type": "ifood",
+      "items": [
+        {
+          "product": {
+            "id": "prod-9",
+            "name": "Combo Dupla Perfeita (Casal)",
+            "description": "2x Burgão Cheddar Bacon + 1x Batata Rústica da Casa + 2x Cervejas Heineken ou Cocas. O melhor preço do cardápio.",
+            "category": "combos",
+            "price": 79.9,
+            "image": "https://images.unsplash.com/photo-1521305916504-4a1121188589?w=400&auto=format&fit=crop&q=80",
+            "stock": 20,
+            "popular": true,
+            "extras": [
+              {
+                "id": "ext-13",
+                "name": "Maionese Artesanal",
+                "price": 2
+              }
+            ]
+          },
+          "quantity": 1,
+          "selectedExtras": [],
+          "observation": "Enviar sachets de ketchup"
+        }
+      ],
+      "total": 87.9,
+      "paymentMethod": "pix",
+      "status": "FINALIZADO",
+      "createdAt": "2026-06-09T14:08:02.527Z",
+      "ifoodDetails": {
+        "originalId": "IFD-990184",
+        "deliveryFee": 8,
+        "syncStatus": "COMPLETED"
+      },
+      "startedPreparAt": "2026-06-09T14:20:10.632Z",
+      "readyAt": "2026-06-09T14:20:15.317Z",
+      "completedAt": "2026-06-09T14:54:48.235Z"
+    },
+    {
+      "id": "ord-4",
+      "displayId": 1004,
+      "clientName": "Mesa 07",
+      "type": "qrcode",
+      "tableNum": "Mesa 07",
+      "items": [
+        {
+          "product": {
+            "id": "prod-2",
+            "name": "Frango Crisp Crocante",
+            "description": "Filé de frango empanado ultra crocante na farinha panko, maionese artesanal de alho, queijo prato e alface americana.",
+            "category": "lanches",
+            "price": 28.9,
+            "image": "https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?w=400&auto=format&fit=crop&q=80",
+            "stock": 30,
+            "popular": true,
+            "extras": [
+              {
+                "id": "ext-4",
+                "name": "Maionese Extra",
+                "price": 2
+              },
+              {
+                "id": "ext-5",
+                "name": "Queijo Prato",
+                "price": 3
+              }
+            ]
+          },
+          "quantity": 2,
+          "selectedExtras": [
+            {
+              "id": "ext-4",
+              "name": "Maionese Extra",
+              "price": 2
+            }
+          ],
+          "observation": "Cortar ao meio"
+        }
+      ],
+      "total": 61.8,
+      "status": "AGUARDANDO_PAGAMENTO",
+      "createdAt": "2026-06-09T14:13:02.527Z"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "tx-pp07n3a",
+      "type": "receita",
+      "category": "Vendas",
+      "description": "Venda #1005 (Letícia Lima)",
+      "amount": 51.4,
+      "date": "2026-06-09T14:56:23.557Z"
+    },
+    {
+      "id": "tx-hic0nmo",
+      "type": "receita",
+      "category": "Vendas",
+      "description": "Venda #1006 (Luiz Henrique (teste))",
+      "amount": 39.4,
+      "date": "2026-06-09T14:56:22.538Z"
+    },
+    {
+      "id": "tx-37g85dx",
+      "type": "receita",
+      "category": "Vendas",
+      "description": "Venda #1003 (Carlos Alberto)",
+      "amount": 87.9,
+      "date": "2026-06-09T14:54:48.235Z"
+    },
+    {
+      "id": "tx-1",
+      "type": "despesa",
+      "category": "Insumos",
+      "description": "Compra de Hortifruti (alface, tomate)",
+      "amount": 125,
+      "date": "2026-06-07T14:18:02.526Z"
+    },
+    {
+      "id": "tx-2",
+      "type": "despesa",
+      "category": "Insumos",
+      "description": "Compra de Carnes e Pães",
+      "amount": 480,
+      "date": "2026-06-08T14:18:02.527Z"
+    },
+    {
+      "id": "tx-3",
+      "type": "despesa",
+      "category": "Estrutura",
+      "description": "Energia Elétrica Copel",
+      "amount": 320,
+      "date": "2026-06-06T14:18:02.527Z"
+    },
+    {
+      "id": "tx-4",
+      "type": "receita",
+      "category": "Vendas",
+      "description": "Venda PDV #1001",
+      "amount": 45.9,
+      "date": "2026-06-09T09:18:02.527Z"
+    },
+    {
+      "id": "tx-5",
+      "type": "receita",
+      "category": "Vendas",
+      "description": "Venda QR Code #1002 (Mesa 03)",
+      "amount": 38,
+      "date": "2026-06-09T12:18:02.527Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "user-1",
+      "username": "aline.admin",
+      "name": "Aline (Administrador)",
+      "role": "admin"
+    },
+    {
+      "id": "user-2",
+      "username": "bruna.caixa",
+      "name": "Bruna (Caixa)",
+      "role": "caixa"
+    },
+    {
+      "id": "user-3",
+      "username": "marcos.cozinha",
+      "name": "Marcos (Cozinha)",
+      "role": "cozinha"
+    },
+    {
+      "id": "user-4",
+      "username": "felipe.atendente",
+      "name": "Felipe (Atendente)",
+      "role": "atendente"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "log-4ly9kiv",
+      "timestamp": "2026-06-09T14:56:23.557Z",
+      "user": "Bruna (Caixa)",
+      "action": "Mudança de Status",
+      "details": "Pedido #1005 atualizado de PRONTO para FINALIZADO",
+      "type": "ifood"
+    },
+    {
+      "id": "log-dqcu2wo",
+      "timestamp": "2026-06-09T14:56:22.538Z",
+      "user": "Bruna (Caixa)",
+      "action": "Mudança de Status",
+      "details": "Pedido #1006 atualizado de PRONTO para FINALIZADO",
+      "type": "ifood"
+    },
+    {
+      "id": "log-a9ztcv3",
+      "timestamp": "2026-06-09T14:55:11.080Z",
+      "user": "Marcos (Cozinha)",
+      "action": "Mudança de Status",
+      "details": "Pedido #1006 atualizado de EM_PREPARO para PRONTO",
+      "type": "ifood"
+    },
+    {
+      "id": "log-bakymyu",
+      "timestamp": "2026-06-09T14:55:10.074Z",
+      "user": "Marcos (Cozinha)",
+      "action": "Mudança de Status",
+      "details": "Pedido #1006 atualizado de CONFIRMADO para EM_PREPARO",
+      "type": "ifood"
+    },
+    {
+      "id": "log-q181y30",
+      "timestamp": "2026-06-09T14:55:08.894Z",
+      "user": "Marcos (Cozinha)",
+      "action": "Mudança de Status",
+      "details": "Pedido #1005 atualizado de EM_PREPARO para PRONTO",
+      "type": "ifood"
+    },
+    {
+      "id": "log-abe3aay",
+      "timestamp": "2026-06-09T14:54:48.235Z",
+      "user": "Bruna (Caixa)",
+      "action": "Mudança de Status",
+      "details": "Pedido #1003 atualizado de PRONTO para FINALIZADO",
+      "type": "ifood"
+    },
+    {
+      "id": "log-b8yztku",
+      "timestamp": "2026-06-09T14:54:40.537Z",
+      "user": "Bruna (Caixa)",
+      "action": "Mudança de Status",
+      "details": "Pedido #1005 atualizado de NOVO para EM_PREPARO",
+      "type": "ifood"
+    },
+    {
+      "id": "log-obnlinq",
+      "timestamp": "2026-06-09T14:53:04.159Z",
+      "user": "Sistema",
+      "action": "Integração iFood",
+      "details": "Conexão Real iFood Homologada com Sucesso para Loja: \"Teste - luxdank\".",
+      "type": "ifood"
+    },
+    {
+      "id": "log-hi6e2ap",
+      "timestamp": "2026-06-09T14:34:34.155Z",
+      "user": "Bruna (Caixa)",
+      "action": "Criação de Pedido",
+      "details": "Pedido #1006 de R$ 39.40 criado. Tipo: IFOOD",
+      "type": "ifood"
+    },
+    {
+      "id": "log-uxvkkzx",
+      "timestamp": "2026-06-09T14:20:48.616Z",
+      "user": "Automação iFood",
+      "action": "Captura Automática iFood",
+      "details": "Pedido iFood IFD-824040 recebido com sucesso. Total: R$ 51.40 (Frete R$ 7.50)",
+      "type": "ifood"
+    },
+    {
+      "id": "log-gcdp3dc",
+      "timestamp": "2026-06-09T14:20:15.317Z",
+      "user": "Cozinha",
+      "action": "Mudança de Status",
+      "details": "Pedido #1003 atualizado de EM_PREPARO para PRONTO",
+      "type": "ifood"
+    },
+    {
+      "id": "log-ss48bbn",
+      "timestamp": "2026-06-09T14:20:10.632Z",
+      "user": "Cozinha",
+      "action": "Mudança de Status",
+      "details": "Pedido #1003 atualizado de CONFIRMADO para EM_PREPARO",
+      "type": "ifood"
+    },
+    {
+      "id": "log-jphtvxk",
+      "timestamp": "2026-06-09T14:19:43.526Z",
+      "user": "admin",
+      "action": "Edição de Produto",
+      "details": "Produto \"Burgão Cheddar Bacon\" atualizado. Preço: R$ 32.9",
+      "type": "info"
+    },
+    {
+      "id": "log-1",
+      "timestamp": "2026-06-09T08:18:02.527Z",
+      "user": "Bruna (Caixa)",
+      "action": "Abertura de Caixa",
+      "details": "Caixa aberto com saldo inicial de R$ 150,00",
+      "type": "finance"
+    },
+    {
+      "id": "log-2",
+      "timestamp": "2026-06-09T09:18:02.527Z",
+      "user": "Bruna (Caixa)",
+      "action": "Pagamento de Pedido",
+      "details": "Pedido #1001 pago via PIX - R$ 43,90",
+      "type": "finance"
+    },
+    {
+      "id": "log-3",
+      "timestamp": "2026-06-09T12:18:02.527Z",
+      "user": "Bruna (Caixa)",
+      "action": "Aprovação de Pedido QR Code",
+      "details": "Pedido de Mesa 03 aprovado e lançado no painel de cozinha",
+      "type": "info"
+    },
+    {
+      "id": "log-4",
+      "timestamp": "2026-06-09T14:08:02.527Z",
+      "user": "Integração iFood",
+      "action": "Captura Automática",
+      "details": "Novo pedido iFood #990184 capturado via API polling",
+      "type": "ifood"
+    }
+  ],
+  "caixaStatus": {
+    "isOpen": true,
+    "openedAt": "2026-06-09T08:18:02.527Z",
+    "closedAt": null,
+    "initialBalance": 150
+  },
+  "ifoodConfig": {
+    "clientId": "f10b44a2-6108-4a3b-b882-e8cb8089cc17",
+    "clientSecret": "svphzjn1eo97am7jkupndjkf85y6n41slxbs5kbyaedjuirsqu7xdzt6fbmhefrhiajvbir9j590pwpgqcczcakuqven77l2hi2",
+    "merchantId": "3883695",
+    "status": "connected",
+    "storeName": "Teste - luxdank"
+  }
+}

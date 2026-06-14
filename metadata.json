@@ -1,0 +1,6 @@
+{
+  "name": "Gestão de Lanchonete e Delivery",
+  "description": "Sistema completo para gestão de lanchonete: Caixa/Ponto de venda, Painel de Cozinha (Kanban), Cardápio Digital QR Code para clientes e Simulador de iFood.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
